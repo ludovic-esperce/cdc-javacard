@@ -13,6 +13,11 @@
   author,
   doc
 )
+
+#outline()
+
+#pagebreak()
+
 = Introduction
 
 L'objectif de ce projet est de développer une application "desktop" Java permettant de gérer une liste de contacts et d'exporter les informations sous différents formats.
@@ -58,6 +63,8 @@ Vous trouverez dans cette partie du cahier des charges une liste des fonctionnal
   [*M*],
   [Export d'un ou plusieurs contacts en *vCard*],
   [*M*],
+  [Rechercher dans la liste des contact],
+  [*S*],
   [Générer un QRCode contenant les informations de la vCard et l'afficher à l'écran],
   [*C*],
   [Export d'un ou plusieurs contacts en *CSV*],
@@ -66,17 +73,19 @@ Vous trouverez dans cette partie du cahier des charges une liste des fonctionnal
 
 Dans la suite de ce document, vous trouverez des informations détaillées sur ces différentes fonctionnalités.
 
+#pagebreak()
+
 == Gestion de contacts
 
 L'application devra proposer une *interface graphique ergonomique* permettant de gérer une liste de contacts.
 
-Les opérations attendues sont les opérations classique *CRUD* :
-- consultations d'une liste de contacts
-- création de contacts
-- modification de contacts
-- suppression de contact
-
 #align(center)[#image("assets/crud.png", width: 80%)]
+
+Les opérations attendues sont les opérations *CRUD* :
+- consultations d'une liste de contact(s)
+- création de contact(s)
+- modification de contact(s)
+- suppression de contact(s)
 
 Une contact est défini par les caractéristiques suivantes :
 - *nom* (obligatoire)
@@ -91,29 +100,28 @@ Une contact est défini par les caractéristiques suivantes :
 - *une adresse postale*  (obligatoire)
 - *un lien vers la page Github ou Gitlab du contact* (optionnel)
 
-=== Tableau des informations de contact
+=== Affichage des contacts et création/modification
 
-Un tableau listant tous les contacts gérés par l'application est à développer.
-Ce tableau devra être interface et le clic sur une ligne représentant un contact aura pour impact de pré-remplir les champs du formulaire de création/modification.
+Un *tableau* qui liste tous les contacts gérés par l'application est à intégrer à l'interface principale.
 
-=== Formulaire de création/modification de contact
+Sur la même vue, un formulaire de création/modification devra être intégrer. Le clic sur une ligne du tableau devra pré-remplir les champ du formulaire pour permettre la modification de l'élément.
 
-Il vous faudra imaginer un formulaire de création/modification de contact *ergonomique* afin de faciliter l'utilisation.
-
+#block(fill: rgb("#F58C82"), inset: 8pt, radius: 8pt)[
 Veillez à bien vérifier la validité des informations saisies par l'utilisateur pour les champs :
 - adresse email
 - lien vers la page Github ou Gitlab
+]
 
-Si l'utilisateur saisit des données incorrectes il faudra une *indication visuelle* explicite indiquant le champ en erreur. 
+Si l'utilisateur saisit des données incorrectes il faudra une *indication visuelle* explicite indiquant le champ est en erreur. 
 
 La vérification de ces informations pourra se faire en utilisant des *expressions régulières*.
 
-Une expression régulière est une chaîne de caractères type qui correspond à un motif (ou "pattern") de caractères possibles.
+Une expression régulière est une chaîne de caractères type qui correspond à un *motif* (ou "pattern") de caractères possibles.
 Ce motif permet de trouver une *correpondance dans une autre chaîne de caractère* (c'est le "matching").
 
-Afin de découvrire le fonctionnement des expressions régulières il vous est conseillé de suivre le tutoriel en ligne #link("https://regexlearn.com/learn/regex101")[ReagexLean] (les 30 premiers exercices vous permettront de bien cerner le fonctionnement).
+Afin de découvrire le fonctionnement des expressions régulières il vous est conseillé de suivre le tutoriel en ligne #link("https://regexlearn.com/learn/regex101")[ReagexLearn] (les 30 premiers exercices vous permettront de bien cerner le fonctionnement).
 
-Une fois le fonctionnement des expressions régulières compris, vous pourrez vous référer à l'article #link("https://koor.fr/Java/Tutorial/java_regular_expression.wp")[disponible ici] pour apprendre à les implémenter en Java (l'article vous donne également la solution pour la vérification des adresses email).
+Une fois le fonctionnement des expressions régulières compris, vous pourrez vous référer à l'article #link("https://koor.fr/Java/Tutorial/java_regular_expression.wp")[disponible ici] pour apprendre à les implémenter en Java.
 
 === Chargement de la liste des contacts
 
@@ -121,9 +129,11 @@ Il devra être possible de sauvegarder la liste des utilisateurs dans un fichier
 
 Pour se faire vous pouvez mettre en place un système de #link("https://www.baeldung.com/java-serialization-approaches#javas-native-serialization")[*sérialisation binaire*] de la liste de tous les contacts.
 
+#pagebreak()
+
 == Sauvegarde des contacts dans des fichiers
 
-=== Sauvegarde dans un fichier vCard
+=== Export d'un fichier vCard
 
 ==== Qu'est-ce qu'une vCard ?
 
@@ -157,22 +167,24 @@ Il vous faudra prévoir une fonctionnalité permettant de sauvegarder dans un fi
 
 La section suivante vous guidera sur la façon de mener l'analyse de la structure des vCard 4 afin de comprendre quoi inscrire dans le fichier.
 
-Vous pourrez tester vos fichiers ".vcf" 
-
 ==== Ecriture dans un fichier de la vCard
 
 La première étape est d'arriver à constuire une chaîne de caractères contenant les informations de la vCard.
 
-Il vous faudra analyser le contenue d'une vCard (par exemple celle fournie en exemple) afin d'en comprendre la structuration. La #link("https://datatracker.ietf.org/doc/html/rfc6350")[RFC6350] pourra vous aider dans cette perspective.
+Avant de pouvoir implémenter la fonctionnalité, vous allez devoir analyser le contenu d'une vCard (par exemple celle fournie en exemple) afin d'en comprendre la structuration.\
+Cette structuration est détaillée dans la #link("https://datatracker.ietf.org/doc/html/rfc6350")[RFC6350].
 
 Voici un premier exemple, concernant le nom du contact :
 ```
 N:Gump;Forrest;;Mr.;
 ```
-
 `N:` indique que l'information qui suit concerne le nom du contact.
 
-Ci-dessous une description de cette chaîne de caractères 
+Ci-dessous une description de cette chaîne de caractères :
+
+#image("assets/n-vcard.svg")
+
+Nous observons que de nombreux champs sont facultatifs et peuvent rester vides.
 
 Voici un autre exemple, il s'agit ici de la ligne comprenant les informations d'adresse personnelle :
 ```
@@ -189,7 +201,9 @@ Pour écrire dans un fichier vous pouvez vous inspirer des solutions présentée
 
 ==== Tester ses vCard
 
-Une fois vos vCards créées il vous faudra les tester. Vous pouvez utiliser un outil d'affichage de contenu de vCard tel que #link("https://github.com/abdelkader/vCardEditor")[vCard Editor] sous Windows.
+Une fois vos vCards créées, il vous faudra les tester. Vous pouvez utiliser un outil d'affichage de contenu de vCard tel que #link("https://github.com/abdelkader/vCardEditor")[vCard Editor] sous Windows.
+
+#pagebreak()
 
 === Sauvegarde dans un fichier JSON
 
@@ -250,8 +264,7 @@ Pour dessiner ces "zoning" et "wireframe" deux choix s'offrent à vous :
   ) 
 ]
 
-
-Attention, veillez à faire valider votre maquette par le client avant de commencer à coder.
+*Attention*, veillez à faire valider votre maquette par le client avant de commencer à coder.
 
 #pagebreak()
 
@@ -271,9 +284,26 @@ Cette phase permet de cibler les besoins utilisateurs et mener une *analyse fonc
 
 Une fois les objectifs clairs, vous pourrez créer un "backlog" de tâches à effectuer et mettre en place un outil de gestion de projet de votre choix.
 
-Dans le cadre de ce projet nous ferons qu'une seul "sprint" de la durée du projet.
-
+Dans le cadre de ce projet nous ferons qu'un seul "Sprint" de la durée du projet.
 
 = Pour aller plus loin
 
-Si le temps vous le permet, vous pourrez 
+Si le temps vous le permet, vous pourrez implémenter les fonctionnalités non prioritaires de l'application :
+#table(
+  columns: (1fr, auto),
+  inset: 10pt,
+  align: horizon,
+  fill: (_, y) =>
+    if y == 0 { rgb("#d5e8b5") },
+  table.header(
+    [Fonctionnalité], [MoSCoW],
+  ),
+  [Générer un QRCode contenant les informations de la vCard et l'afficher à l'écran],
+  [*C*],
+  [Export d'un ou plusieurs contacts en *CSV*],
+  [*C*]
+)
+
+Pour la génération d'un QRCode pour pourrez utiliser une bibliothèque telle que #link("https://www.geeksforgeeks.org/how-to-generate-and-read-qr-code-with-java-using-zxing-library/")[ZXing].
+
+En ce qui concerne l'export des contacts #link("https://fr.wikipedia.org/wiki/Comma-separated_values")[CSV] il faudra permettre à l'utilisateur de choisir le séparateur qu'il souhaite utiliser (par défaut la ',' sera proposée).
