@@ -29,8 +29,8 @@ Choix technologiques :
 - pas de contrainte sur les bibliothèques utilisables
 
 Modalités de travail :
-- date de début du projet : 25/07/2024
-- présentation du projet : 06/07/2024
+- date de début du projet : 26/07/2024
+- présentation du projet : 07/08/2024
 - équipes de 2
 - gestion du projet inspiré par la méthode *Scrum*
 - utilisation d'un dépôt Git partagé
@@ -91,7 +91,7 @@ Une contact est défini par les caractéristiques suivantes :
 - *nom* (obligatoire)
 - *prénom* (obligatoire)
 - *genre* : homme/femme/non-binaire (obligatoire)
-- *date de naissance*
+- *date de naissance* (optionnel)
 - *un pseudonyme* (optionnel)
 - *adresse* (obligatoire)
 - *numéro de téléphone personnel* (obligatoire)
@@ -106,7 +106,7 @@ Un *tableau* qui liste tous les contacts gérés par l'application est à intég
 
 Sur la même vue, un formulaire de création/modification devra être intégrer. Le clic sur une ligne du tableau devra pré-remplir les champ du formulaire pour permettre la modification de l'élément.
 
-#block(fill: rgb("#F58C82"), inset: 8pt, radius: 8pt)[
+#block(inset: 8pt, radius: 8pt, fill: rgb("#F58C82"))[
 Veillez à bien vérifier la validité des informations saisies par l'utilisateur pour les champs :
 - adresse email
 - lien vers la page Github ou Gitlab
@@ -209,22 +209,34 @@ Une fois vos vCards créées, il vous faudra les tester. Vous pouvez utiliser un
 
 ==== Détails de la fonctionnalité
 
-En plus de la sauvegarde en vCard, l'application devra permettre sauvegarder les contacts en utilisant le format JSON.
+En plus de la sauvegarde en vCard, l'application devra permettre sauvegarder les contacts en utilisant le *format JSON*.
 
 JSON est un format de données textuel sous forme de tableau associatif (stockage "clé-valeur").
+
+Voici, par exemple, un extrait de JSON représentant les données d'une partie de la classe "Contact" :
+```json
+{
+  "firstName": "Ada",
+  "lastName": "Lovelace",
+  "nickname": "Mothergoddess"
+  "birthDate": "10-12-1815",
+  
+  ...
+}
+```
 
 Vous pourrez découvrir le format JSON à l'aide de #link("https://grafikart.fr/tutoriels/json-77")[cette vidéo de Grafikart] ou en consultant #link("https://la-cascade.io/articles/json-pour-les-debutants")[cet article].
 
 ==== Conseils d'implémentation
 
-Votre objectif est de récupérer les informations de contact issues d'objets et de sauvegarder ses informations dans un fichier ayant pour extension ".json".
+Votre objectif est de récupérer les *informations de contacts issues d'objets* et de sauvegarder ces informations dans un fichier ayant pour extension *".json"*.
 
 Afin d'écrire des objets dans un JSON, vous pourrez utiliser une des nombreuses bibliothèques permettant de le faire, par exemple :
 - #link("https://central.sonatype.com/artifact/com.googlecode.json-simple/json-simple")[json-simple] : tutoriel disponible #link("https://mkyong.com/java/json-simple-example-read-and-write-json/")[ici]
 - #link("https://central.sonatype.com/artifact/com.fasterxml.jackson.core/jackson-databind")[jackson] : tutoriel disponible #link("https://mkyong.com/java/write-json-to-a-file-with-jackson/")[ici]
 - #link("https://central.sonatype.com/artifact/com.squareup.moshi/moshi")[moshi] : tutoriel disponible #link("https://mkyong.com/java/how-to-parse-json-using-moshi/#convert-java-object-to-json-string")[ici]
 
-`json-simple` est une solution qui permet de mener à bien la tâche demandée facilement.
+`json-simple` semble être une solution à la mise en place aisée qui permet de mener à bien la tâche demandée.
 
 #pagebreak()
 
@@ -232,7 +244,7 @@ Afin d'écrire des objets dans un JSON, vous pourrez utiliser une des nombreuses
 
 == Contraintes graphiques
 
-Il vous est demandé de concenoir une application compatible avec les tailles de fenêtre allant de *800px x 600px* à *1920px x 1080px*.
+Il vous est demandé de concenoir une application compatible avec les tailles de fenêtre allant de *1024px × 768px* à *1920px x 1080px*.
 
 L'organisation des composants graphiques devra rester harmonieuse pour toute les tailles intermédiaires.
 
@@ -248,21 +260,14 @@ Habituellement, pour construire une maquette graphique, vous devriez suivre les 
 Vous trouverez des exemples de ces 3 phases dans l'article #link("https://olivier-godard.medium.com/zoning-wireframe-mockup-prototype-mais-à-quoi-ça-correspond-cd82de10338")[disponible ici].
 
 Pour ce projet il vous est fortement conseillé de constuire une "zoning" et un "wireframe" pour 2 résolutions spécifiques :
-- 800px x 600px
+- 1024px × 768px
 - 1920px x 1080px
 
 La maquette haute fidelité importe moins dans notre cas du fait qu'il n'est pas demandé de mettre en place un style complexe.
 
 Pour dessiner ces "zoning" et "wireframe" deux choix s'offrent à vous :
 - dessiner sur une feuille
-- dessiner en utilisant un outil collaboratif en ligne tel que #link("https://penpot.app/")["Penpot"]
-
-#link("https://penpot.app/")[
-  #figure(
-    image("assets/penpot-logo.svg", width: 25%),
-    caption: [Logo de Penpot],
-  ) 
-]
+- dessiner en utilisant un outil collaboratif en ligne tel que #link("https://www.figma.com/fr-fr/")["Figma"]
 
 *Attention*, veillez à faire valider votre maquette par le client avant de commencer à coder.
 
@@ -272,21 +277,27 @@ Pour dessiner ces "zoning" et "wireframe" deux choix s'offrent à vous :
 
 Ci-dessous une proposition d'architecture logicielle utilisant le langage UML (hors fonctionnalités optionelles) :
 
-// TODO intégrer le diagramme UML
+#image("assets/architecture.svg")
 
 = Phases de travail
 
-== Mise en place du projet
+Votre équipe pourra suivre les phases de travail détaillées suivantes :
 
-=== Préparation du "backlog"
++ Analyse fonctionnelle :
+  - lecture du cahier des charges
+  - définition des "persona"
+  - construction d'un "backlog" avec les "user stories"
++ Maquettage de l'application :
+  - création du "zoning" et du "wireframe"
+  - validation de l'interface avec le "product owner" (autrement dit : votre formateur)
++ Conception de l'application (réflexion architecturale + conception de diagrammes)
++ Préparation du "sprint" et début des développements
++ Tests fonctionnels au cours des développements
++ Livraison de l'application : *07/07/2024*
 
-Cette phase permet de cibler les besoins utilisateurs et mener une *analyse fonctionnelle*.
+#pagebreak()
 
-Une fois les objectifs clairs, vous pourrez créer un "backlog" de tâches à effectuer et mettre en place un outil de gestion de projet de votre choix.
-
-Dans le cadre de ce projet nous ferons qu'un seul "Sprint" de la durée du projet.
-
-= Pour aller plus loin
+= Fonctionnalités 'C' ("Could have this...")
 
 Si le temps vous le permet, vous pourrez implémenter les fonctionnalités non prioritaires de l'application :
 #table(

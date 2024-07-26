@@ -4,57 +4,55 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>400</y>
+      <x>40</x>
+      <y>300</y>
       <w>210</w>
-      <h>190</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Contact
 --
 /* TODO à compléter */
 --
-+ </panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>580</x>
-      <y>440</y>
+      <x>420</x>
+      <y>340</y>
       <w>480</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=yellow
-/ContactJsonSerializer/
+ContactJsonSerializer
 --
 
 --
-+ save(String path, ArrayList&lt;Contact&gt; contacts): void
-+ save(String path, Contact contact): void</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>580</x>
-      <y>570</y>
+      <x>420</x>
+      <y>470</y>
       <w>480</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=yellow
-/ContactVCardSerializer/
+ContactVCardSerializer
 --
 
 --
-+ save(String path, ArrayList&lt;Contact&gt; contacts): void
-+ save(String path, Contact contact): void</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>230</y>
+      <x>30</x>
+      <y>130</y>
       <w>210</w>
       <h>90</h>
     </coordinates>
@@ -69,8 +67,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>310</y>
+      <x>130</x>
+      <y>210</y>
       <w>120</w>
       <h>110</h>
     </coordinates>
@@ -81,9 +79,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1220</x>
-      <y>590</y>
-      <w>400</w>
+      <x>1070</x>
+      <y>340</y>
+      <w>420</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
@@ -91,68 +89,66 @@
 --
 
 --
-+ save(ArrayList&lt;T&gt; object): void
-+ save(T object): void</panel_attributes>
++ saveList(filePath: String, objectsToSave: ArrayList&lt;T&gt;): void
++ save(filePath: String, T object): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>580</x>
-      <y>700</y>
+      <x>420</x>
+      <y>600</y>
       <w>480</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=yellow
 ContactBinarySerializer
 --
 
---
-+ save(String path, ArrayList&lt;Contact&gt; contacts): void
-+ save(String path, Contact contact): void</panel_attributes>
+--</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>490</y>
-      <w>190</w>
-      <h>140</h>
+      <x>890</x>
+      <y>340</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;20.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>600</y>
-      <w>190</w>
-      <h>60</h>
+      <x>890</x>
+      <y>380</y>
+      <w>200</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>660</y>
-      <w>190</w>
-      <h>100</h>
+      <x>890</x>
+      <y>410</y>
+      <w>200</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>490</y>
+      <x>240</x>
+      <y>360</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -163,8 +159,8 @@ ContactBinarySerializer
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>640</x>
-      <y>280</y>
+      <x>230</x>
+      <y>10</y>
       <w>330</w>
       <h>90</h>
     </coordinates>
@@ -178,36 +174,90 @@ sous les différents formats attendus.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>360</y>
-      <w>80</w>
-      <h>100</h>
+      <x>430</x>
+      <y>90</y>
+      <w>30</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;80.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>540</y>
+      <x>240</x>
+      <y>370</y>
       <w>200</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>370</y>
+      <w>200</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>580</y>
+      <w>280</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;80.0</additional_attributes>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/Deserializer&lt;T&gt;/
+--
+
+--
++ loadList(filePath: String): ArrayList&lt;T&gt;
++ load(filePath: String): T</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>630</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>130</x>
+      <y>730</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=orange
+"ContactBinarySerializer" est la seule qui
+implémente "Deserialize&lt;T&gt;" c</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>400</x>
-      <y>570</y>
-      <w>200</w>
-      <h>200</h>
+      <y>660</y>
+      <w>50</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;180.0</additional_attributes>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;70.0;30.0;10.0</additional_attributes>
   </element>
 </diagram>
