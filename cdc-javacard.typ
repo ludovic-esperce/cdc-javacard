@@ -29,16 +29,15 @@ Choix technologiques :
 - pas de contrainte sur les bibliothèques utilisables
 
 Modalités de travail :
-- date de début du projet : 26/07/2024
-- présentation du projet : 07/08/2024
-- équipes de 2
-- gestion du projet inspiré par la méthode *Scrum*
+- équipes de 2 personnes
 - utilisation d'un dépôt Git partagé
 
 Livrables attendus :
-- code source de l'application
-- diagrammes UML éventuels
+- code source de l'application hébergé sur un dépôt Git
+- diagrammes UML (cas d'utilisation et de classes)
 - "zoning" et "wireframe" de l'interface graphique
+- diaporama de présentation de projet
+- vue "kanban" de gestion de projet
 
 #pagebreak()
 
@@ -104,7 +103,7 @@ Une contact est défini par les caractéristiques suivantes :
 
 Un *tableau* qui liste tous les contacts gérés par l'application est à intégrer à l'interface principale.
 
-Sur la même vue, un formulaire de création/modification devra être intégrer. Le clic sur une ligne du tableau devra pré-remplir les champ du formulaire pour permettre la modification de l'élément.
+Sur la même vue, un formulaire de création/modification devra être intégré. Le clic sur une ligne du tableau devra pré-remplir les champ du formulaire pour permettre la modification de l'élément.
 
 #block(inset: 8pt, radius: 8pt, fill: rgb("#F58C82"))[
 Veillez à bien vérifier la validité des informations saisies par l'utilisateur pour les champs :
@@ -119,11 +118,11 @@ La vérification de ces informations pourra se faire en utilisant des *expressio
 Une expression régulière est une chaîne de caractères type qui correspond à un *motif* (ou "pattern") de caractères possibles.
 Ce motif permet de trouver une *correpondance dans une autre chaîne de caractère* (c'est le "matching").
 
-Afin de découvrire le fonctionnement des expressions régulières il vous est conseillé de suivre le tutoriel en ligne #link("https://regexlearn.com/learn/regex101")[ReagexLearn] (les 30 premiers exercices vous permettront de bien cerner le fonctionnement).
+Afin de découvrire le fonctionnement des expressions régulières il vous est conseillé de suivre le tutoriel en ligne #link("https://regexlearn.com/learn/regex101")[RegexLearn] (les 30 premiers exercices vous permettront de bien cerner le fonctionnement).
 
 Une fois le fonctionnement des expressions régulières compris, vous pourrez vous référer à l'article #link("https://koor.fr/Java/Tutorial/java_regular_expression.wp")[disponible ici] pour apprendre à les implémenter en Java.
 
-=== Chargement de la liste des contacts
+=== Persistence de la liste des contacts
 
 Il devra être possible de sauvegarder la liste des utilisateurs dans un fichier binaire afin de pouvoir les recharger lors du lancement de l'application.
 
@@ -250,7 +249,7 @@ L'organisation des composants graphiques devra rester harmonieuse pour toute les
 
 == Conception de "wireframe"
 
-Pour ce projet, il ne vous est pas demandé de mener une recherche graphique poussée (le design importe peu, vous allez vous concentrer sur les fonctionnalités) mais il vous faudra faire en sorte de développer une interface la plus simplet et ergonomique possible.
+Pour ce projet, il ne vous est pas demandé de mener une recherche graphique poussée (le design importe peu, vous allez vous concentrer sur les fonctionnalités) mais il vous faudra faire en sorte de développer une interface la plus simple et ergonomique possible.
 
 Habituellement, pour construire une maquette graphique, vous devriez suivre les phases suivants :
 + *zoning* : schématisation grossière de ce sera que la vue de l'application. On y indique uniquement des rectangles qui correspondent à des blocs de composants graphiques logiquement liés.
@@ -267,7 +266,7 @@ La maquette haute fidelité importe moins dans notre cas du fait qu'il n'est pas
 
 Pour dessiner ces "zoning" et "wireframe" deux choix s'offrent à vous :
 - dessiner sur une feuille
-- dessiner en utilisant un outil collaboratif en ligne tel que #link("https://www.figma.com/fr-fr/")["Figma"]
+- dessiner en utilisant un outil collaboratif en ligne tel que #link("https://penpot.app/")["Penpot"]
 
 *Attention*, veillez à faire valider votre maquette par le client avant de commencer à coder.
 
@@ -285,15 +284,14 @@ Votre équipe pourra suivre les phases de travail détaillées suivantes :
 
 + Analyse fonctionnelle :
   - lecture du cahier des charges
-  - définition des "persona"
-  - construction d'un "backlog" avec les "user stories"
+  - création des diagrammes de cas d'utilisation
 + Maquettage de l'application :
   - création du "zoning" et du "wireframe"
   - validation de l'interface avec le "product owner" (autrement dit : votre formateur)
 + Conception de l'application (réflexion architecturale + conception de diagrammes)
-+ Préparation du "sprint" et début des développements
 + Tests fonctionnels au cours des développements
-+ Livraison de l'application : *07/07/2024*
++ (Tests unitaires et approche TDD si possible)
++ Livraison de l'application : *13/06/2025*
 
 #pagebreak()
 
